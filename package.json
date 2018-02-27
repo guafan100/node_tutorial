@@ -1,0 +1,22 @@
+{
+  "name": "node_tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helloworld.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guafan100/node_tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guafan100/node_tutorial/issues"
+  },
+  "homepage": "https://github.com/guafan100/node_tutorial#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}

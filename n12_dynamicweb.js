@@ -1,18 +1,19 @@
 var http = require('http');
 var url = require('url');
 var router = require('./router'); 
+var cheerio = require('cheerio');
 var    exception    =    require('./models/Exception');
-http.createServer(function(request, response) {
-    var pathname = url.parse(request.url).pathname; 
+http.createServer(function(req, res) {
+    var pathname = url.parse(req.url).pathname; 
     pathname = pathname.replace(/\//, '');// '/' -> ''
 
     try {
-        router[pathname](request, response);
+        router[pathname](req, res);
     } catch(err) {
         console.log(err);
-        response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-        response.write(err.toString());
-        response.end("");        
+        res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+        res.write(err.toString());
+        res.end("");        
     }
     console.log('finished');
     
