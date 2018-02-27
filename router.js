@@ -31,12 +31,24 @@ module.exports={
         //-------注意异步-------------      
         req.on('end', function(){        //在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。      
             post = querystring.parse(post);      
-            console.log('email:'+post['email']+'\n');        
-            console.log('pwd:'+post['password']+'\n');
+            // console.log('email:'+post['email']+'\n');        
+            // console.log('pwd:'+post['password']+'\n');
+            
+            // recall = getRecall(req, res);
+            arr = ['email', 'password'];
+            function recall(data) { 
+                dataStr = data.toString();
+                for(var i = 0; i < arr.length; i++) {
+                    re = new RegExp('{'+arr[i]+'}','g');
+                    dataStr = dataStr.replace(re, post[arr[i]]);
+                }
+                res.write(dataStr);
+                res.end("");        
+            }
+            opfile.readfileAsync('./views/login.html', recall);
         });      
         //--------------------------------------- 
-        recall = getRecall(req, res);
-        opfile.readfileAsync('./views/login.html', recall);
+
     },
     zhuce:function(req, res){
         recall = getRecall(req, res);
