@@ -1,6 +1,6 @@
 var http = require('http');
-var    url      =  require('url');
-var    router  =    require('./router'); 
+var url = require('url');
+var router = require('./router'); 
 http.createServer(function(request, response) {
     var pathname = url.parse(request.url).pathname; 
     pathname = pathname.replace(/\//, '');// '/' -> ''

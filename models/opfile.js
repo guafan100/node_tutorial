@@ -10,6 +10,7 @@ module.exports = {
         fs.readFile(path, function(err, data) {
             if (err) {
               console.log(err);
+              recall('file does not exist');
             } else {
               console.log(data.toString());
               recall(data);
