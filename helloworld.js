@@ -15,21 +15,18 @@ var options = {
     qs: {'key1': 'xxx', 'key2': 'yyy'}
 }
 
-
 http.createServer(function(req, response) {
 
-// Start the request
-console.log(options);
-request(options, function (error, res, body) {
-    if (!error && res.statusCode == 200) {
-        // Print out the response body
-        console.log(body)
-        response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-        console.log('visit');
-        response.write(body);
-        response.end('!!');//http协议执行完毕，否则浏览器一直转
-    }
-})
+    // Start the request
+    request(options, function (error, res, body) {
+        if (!error && res.statusCode == 200) {
+            // Print out the response body
+            response.setHeader("Access-Control-Allow-Origin", "*"); 
+            response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+            response.write(body);
+            response.end(''); //http协议执行完毕，否则浏览器一直转
+        }
+    })
 
 }).listen(8000);
 console.log('server running at http://127.0.0.1:8000/');
