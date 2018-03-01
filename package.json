@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/guafan100/node_tutorial#readme",
   "dependencies": {
+    "mysql": "^2.15.0",
     "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "async": "^2.6.0"
   }
 }
